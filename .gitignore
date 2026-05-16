@@ -1,0 +1,9 @@
+# Ignora arquivos temporários do LaTeX 
+**/*.aux
+**/*.log
+**/*.toc
+**/*.fls
+**/*.fdb_latexmk
+**/*.synctex.gz
+**/*.out
+**/*.pdf
