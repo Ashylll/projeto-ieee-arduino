@@ -11,8 +11,9 @@
 #define BUZZER_PIN 4
 #define TAMANHO_MELODIA(m) (sizeof(m) / sizeof(m[0]) / 2)
 
-static int melodia1[] = {D5,-4, A5,8, FS5,8, D5,8, E5,-4};
-static int doisBeeps[] = {A5,16, 0,16, A5,16, 0,16};
+static int melJigglypuff[] = {D5,-4, A5,8, FS5,8, D5,8, E5,-4};
+static int melDoisBeeps[] = {A5,16, 0,16, A5,16, 0,16};
+static int melSucesso[] = {C5,16, D5,16, E5,16, F5,8, 0,16, F5,16, F5,4};
 
 /// @brief comanda o buzzer a tocar certa melodia
 /// @param melodia vetor de notas musicais e seus respectivos tempos
@@ -38,12 +39,18 @@ void tocaMelodia(int melodia[], int numNotas){
 }
 
 /// @brief comanda o buzzer a tocar uma melodia numerada do catálogo interno
-/// @details **1**: as
+///
+/// - (1) Jigglypuff - curto
+///
+/// - (2) Dois Beeps
+/// 
+/// - (3) Sucesso
 /// @param numeroMusica número inteiro que representa a melodia escolhida
 void tocaMelodia(byte numeroMusica){
   switch (numeroMusica){
-    case 1: tocaMelodia(melodia1, TAMANHO_MELODIA(melodia1)); break;
-    case 2: tocaMelodia(doisBeeps, TAMANHO_MELODIA(doisBeeps)); break;
-    default: tocaMelodia(melodia1, TAMANHO_MELODIA(melodia1));
+    case 1: tocaMelodia(melJigglypuff, TAMANHO_MELODIA(melJigglypuff)); break;
+    case 2: tocaMelodia(melDoisBeeps, TAMANHO_MELODIA(melDoisBeeps)); break;
+    case 3: tocaMelodia(melSucesso, TAMANHO_MELODIA(melSucesso)); break;
+    default: tocaMelodia(melJigglypuff, TAMANHO_MELODIA(melJigglypuff));
   }
 }

@@ -41,17 +41,20 @@ void setup()
   Serial.println("Sistema iniciado"); 
   writeCorLed(led1, corAguardando);
   
+  // Checa se não há algo próximo logo ao inicializar o programa
   float distanciaInicial = sensorCiclo();
   bool saiu = false;
 
   if(distanciaInicial <= LIMITE_ATIVACAO){
-    Serial.println("Retire-se");
-    
+    Serial.println("Objeto proximo detectado. Retire para concluir inicializacao");
+    writeCorLed(led1, corErro);
+
     while(!saiu){
       distanciaInicial = sensorCiclo();
       
       if(distanciaInicial > LIMITE_ATIVACAO + EPSILON){
         saiu = true;
+        writeCorLed(led1, corAguardando);
       }
     }
   }
@@ -66,13 +69,11 @@ void loop()
   
   distancia = sensorCiclo();
  
-  if (distancia > 0 && distancia <= LIMITE_ATIVACAO && fora){ // Se menor ou igual a 30cm, liga o LED
+  if (distancia > 0 && distancia <= LIMITE_ATIVACAO && fora){ // Se menor ou igual a 30cm, aciona o sistema
     writeCorLed(led1, corDetectado);
     Serial.println("Animal detectado!");
     tocaMelodia(1);
     delay(400);
-    
-
     
     writeCorLed(led1, corAlimentando);
     Serial.println("Despejando alimento...");
