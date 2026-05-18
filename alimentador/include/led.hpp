@@ -19,12 +19,12 @@
 #define LED1_B 9
 
 // Cores para estados do led
-const byte corAguardando[3] = {61, 210, 242};
-const byte corDetectado[3] = {255, 255, 0};
-const byte corAlimentando[3] = {124, 255, 0};
-const byte corComendo[3] = {255, 12, 183};
+const byte corAguardando[3] = {61, 210, 242}; // Azul
+const byte corDetectado[3] = {255, 255, 0}; // Amarelo
+const byte corAlimentando[3] = {124, 255, 0}; // Verde
+const byte corComendo[3] = {255, 12, 183}; // Roxo
 
-const byte corErro[3] = {255, 0 , 0};
+const byte corErro[3] = {255, 0 , 0}; // Vermelho
 
 /// @brief altera a cor de um LED
 /// @param pinosLed vetor dos pinos do LED na ordem RGB

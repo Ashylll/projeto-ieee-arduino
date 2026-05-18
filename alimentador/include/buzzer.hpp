@@ -18,8 +18,8 @@ static int melSucesso[] = {C5,16, D5,16, E5,16, F5,8, 0,16, F5,16, F5,4};
 /// @brief comanda o buzzer a tocar certa melodia
 /// @param melodia vetor de notas musicais e seus respectivos tempos
 /// @param numNotas número de notas totais na melodia 
-void tocaMelodia(int melodia[], int numNotas){
-  int tempo = 144;
+/// @param tempo bpm da melodia
+void tocaMelodia(int melodia[], int numNotas, int tempo){
   int wholenote = (60000 * 4) / tempo;
   int divider = 0, noteDuration = 0;
   for (int thisNote = 0; thisNote < numNotas * 2; thisNote += 2) {
@@ -48,9 +48,9 @@ void tocaMelodia(int melodia[], int numNotas){
 /// @param numeroMusica número inteiro que representa a melodia escolhida
 void tocaMelodia(byte numeroMusica){
   switch (numeroMusica){
-    case 1: tocaMelodia(melJigglypuff, TAMANHO_MELODIA(melJigglypuff)); break;
-    case 2: tocaMelodia(melDoisBeeps, TAMANHO_MELODIA(melDoisBeeps)); break;
-    case 3: tocaMelodia(melSucesso, TAMANHO_MELODIA(melSucesso)); break;
-    default: tocaMelodia(melJigglypuff, TAMANHO_MELODIA(melJigglypuff));
+    case 1: tocaMelodia(melJigglypuff, TAMANHO_MELODIA(melJigglypuff), 144); break;
+    case 2: tocaMelodia(melDoisBeeps, TAMANHO_MELODIA(melDoisBeeps), 120); break;
+    case 3: tocaMelodia(melSucesso, TAMANHO_MELODIA(melSucesso), 144); break;
+    default: tocaMelodia(melJigglypuff, TAMANHO_MELODIA(melJigglypuff), 144);
   }
 }

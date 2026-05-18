@@ -3,3 +3,6 @@
 .vscode/c_cpp_properties.json
 .vscode/launch.json
 .vscode/ipch
+
+# Arquivo auxiliar para copiar e colar o código do programa todo no Tinkercad 
+codigo_tinkercad.*
