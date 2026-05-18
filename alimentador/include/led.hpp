@@ -8,10 +8,10 @@
     - Detectado: breve momento em que se detecta o animal
     - Alimentando: logo após Detectado, dispensa comida no alimentador
     - Comendo: enquanto ainda observar o animal após alimentá-lo 
-    
-    + Ideias (para lembrar): recarga? (tempo de espera mínimo para ser acionado novamente), vazio? (falta de alimento; não pode ser acionado),
-    Comendo -> tempo mínimo de x segundos sem detecção para passar do estado?
+  Cada estado emite uma cor diferente a fim de distingui-los 
 
+    Cada LED é um vetor de três números inteiros, guardando os número dos pinos conectados no Arduino na ordem RGB:
+    Cauda RED = led[0], cauda GREEN = led[1], cauda BLUE = led[2]
 */
 
 #define LED1_R 11
@@ -24,10 +24,11 @@ const byte corDetectado[3] = {255, 255, 0}; // Amarelo
 const byte corAlimentando[3] = {124, 255, 0}; // Verde
 const byte corComendo[3] = {255, 12, 183}; // Roxo
 
+const byte corAlerta[3] = {150, 140, 0}; // Laranja
 const byte corErro[3] = {255, 0 , 0}; // Vermelho
 
 /// @brief altera a cor de um LED
-/// @param pinosLed vetor dos pinos do LED na ordem RGB
+/// @param pinosLed pinos do LED na ordem RGB
 /// @param cor vetor de inteiros da cor no padrão RGB {0-255, 0-255, 0-255}
 void writeCorLed(const byte pinosLed[], const byte cor[]) {
   analogWrite(pinosLed[0], cor[0]);
