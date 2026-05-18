@@ -45,7 +45,7 @@ void tocaMelodia(int melodia[], int numNotas, int tempo){
 /// - (2) Dois Beeps
 /// 
 /// - (3) Sucesso
-/// @param numeroMusica número inteiro que representa a melodia escolhida
+/// @param numeroMusica número inteiro positivo que representa a melodia escolhida
 void tocaMelodia(byte numeroMusica){
   switch (numeroMusica){
     case 1: tocaMelodia(melJigglypuff, TAMANHO_MELODIA(melJigglypuff), 144); break;

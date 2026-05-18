@@ -1,3 +1,4 @@
+
 #pragma once 
 
 /*
@@ -24,7 +25,7 @@ const byte corDetectado[3] = {255, 255, 0}; // Amarelo
 const byte corAlimentando[3] = {124, 255, 0}; // Verde
 const byte corComendo[3] = {255, 12, 183}; // Roxo
 
-const byte corAlerta[3] = {150, 140, 0}; // Laranja
+const byte corAlerta[3] = {255, 100, 0}; // Laranja
 const byte corErro[3] = {255, 0 , 0}; // Vermelho
 
 /// @brief altera a cor de um LED
