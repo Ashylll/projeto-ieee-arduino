@@ -51,7 +51,7 @@ void modoAguardo(const byte led[], float distancia){
   }
 }
 
-/// @brief checa se há um objeto dentro do limite de ativação e gera a rotina (mudança de cores do LED e saída de texto)
+/// @brief checa se há um objeto dentro do limite de ativação e gera a rotina (mudança de cores do LED, melodia do buzzer e saída de texto)
 /// @param led pinos do led na ordem RGB
 void checaProximidade(const byte led[]){
   static bool fora = false;
