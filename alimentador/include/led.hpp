@@ -15,8 +15,8 @@
 */
 
 #define LED1_R 11
-#define LED1_G 10
-#define LED1_B 9
+#define LED1_G 6
+#define LED1_B 5
 
 // Cores para estados do led
 const byte corAguardando[3] = {61, 210, 242}; // Azul
