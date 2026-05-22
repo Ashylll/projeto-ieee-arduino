@@ -39,9 +39,7 @@ void geraRotina(const byte led[]){
   delay(4000);
 }
 
-void modoAguardo(const byte led[], float distancia){
-  writeCorLed(led, corAguardando);
-  
+void mensagemAguardando(float distancia){
   if (distancia > 334.0){
     Serial.println("Fora de alcance");
   } else {
@@ -55,16 +53,20 @@ void modoAguardo(const byte led[], float distancia){
 /// @param led pinos do led na ordem RGB
 void checaProximidade(const byte led[]){
   static bool fora = false;
+  static int intensidade = 100;
   float distancia = sensorCiclo();
  
   if (distancia > 0 && distancia <= LIMITE_ATIVACAO && fora){ // Se menor ou igual a 30cm, aciona o sistema
     geraRotina(led);
     fora = false;
   }
- 
+  
   if (distancia > LIMITE_ATIVACAO + EPSILON){ 
     fora = true; 
-    modoAguardo(led, distancia);
+    Serial.print("milis: ");
+    Serial.println(millis());
+    pulsaLed(led, corAguardando, intensidade);
+    mensagemAguardando(distancia);
   }
 }
 
