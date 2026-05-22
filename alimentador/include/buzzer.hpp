@@ -16,9 +16,9 @@
 #define BUZZER_PIN 4
 #define TAMANHO_MELODIA(m) (sizeof(m) / sizeof(m[0]) / 2)
 
-static int melJigglypuff[] = {D5,-4, A5,8, FS5,8, D5,8, E5,-4};
-static int melDoisBeeps[] = {A5,16, PAUSA,16, A5,16, PAUSA,16};
-static int melSucesso[] = {C5,16, D5,16, E5,16, F5,8, PAUSA,16, F5,16, F5,4};
+static int melJigglypuff[] = {NOTA_D5,-4, NOTA_A5,8, NOTA_FS5,8, NOTA_D5,8, NOTA_E5,-4};
+static int melDoisBeeps[] = {NOTA_A5,16, NOTA_PAUSA,16, NOTA_A5,16, NOTA_PAUSA,16};
+static int melSucesso[] = {NOTA_C5,16, NOTA_D5,16, NOTA_E5,16, NOTA_F5,8, NOTA_PAUSA,16, NOTA_F5,16, NOTA_F5,4};
 
 /// @brief comanda o buzzer a tocar certa melodia
 /// @param melodia vetor de frequências e seus respectivos tempos
