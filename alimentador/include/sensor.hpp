@@ -36,6 +36,7 @@ void geraRotina(const byte led[]){
   
   writeCorLed(led, corComendo);
   Serial.println("Comendo/aguardando a retirada");
+
   delay(4000);
 }
 
@@ -58,6 +59,12 @@ void checaProximidade(const byte led[]){
  
   if (distancia > 0 && distancia <= LIMITE_ATIVACAO && fora){ // Se menor ou igual a 30cm, aciona o sistema
     geraRotina(led);
+    
+    distancia = sensorCiclo();
+    while (distancia < LIMITE_ATIVACAO + EPSILON){
+    distancia = sensorCiclo();
+    delay(100);
+  }
     fora = false;
   }
   
