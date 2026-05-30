@@ -2,6 +2,7 @@
 #include <Arduino.h>
 #include "led.hpp"
 #include "buzzer.hpp"
+#include <Servo.h>
 
 #define TRIG_PIN 8
 #define ECHO_PIN 7 
@@ -24,7 +25,7 @@ float sensorCiclo(void){
   return (duracao * VELOCIDADE_SOM)/2;
 }
 
-void geraRotina(const byte led[]){
+void geraRotina(const byte led[], Servo &servo){
   writeCorLed(led, corDetectado);
   Serial.println("Animal detectado!");
   tocaMelodia(1);
@@ -32,12 +33,15 @@ void geraRotina(const byte led[]){
   
   writeCorLed(led, corAlimentando);
   Serial.println("Despejando alimento...");
-  delay(2000);
+  servo.write(180);
+
+  delay(2400);
+  servo.write(0);
   
   writeCorLed(led, corComendo);
   Serial.println("Comendo/aguardando a retirada");
 
-  delay(4000);
+  delay(2000);
 }
 
 void mensagemAguardando(float distancia){
@@ -52,14 +56,14 @@ void mensagemAguardando(float distancia){
 
 /// @brief checa se há um objeto dentro do limite de ativação e gera a rotina (mudança de cores do LED, melodia do buzzer e saída de texto)
 /// @param led pinos do led na ordem RGB
-void checaProximidade(const byte led[]){
+void checaProximidade(const byte led[], Servo &servo){
   static bool fora = false;
   static int intensidade = 100;
   float distancia = sensorCiclo();
  
   if (distancia > 0 && distancia <= LIMITE_ATIVACAO && fora){ // Se menor ou igual a 30cm, aciona o sistema
-    geraRotina(led);
-    
+    geraRotina(led, servo);
+
     distancia = sensorCiclo();
     while (distancia < LIMITE_ATIVACAO + EPSILON){
     distancia = sensorCiclo();
@@ -73,7 +77,12 @@ void checaProximidade(const byte led[]){
     Serial.print("milis: ");
     Serial.println(millis());
     pulsaLed(led, corAguardando, intensidade);
+    pulsaLed(led, corAguardando, intensidade);
+    pulsaLed(led, corAguardando, intensidade);
+
     mensagemAguardando(distancia);
+    Serial.println("\n");
+    
   }
 }
 
